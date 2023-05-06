@@ -19,7 +19,6 @@
         app:layout_constraintVertical_bias="0.022" />
 
 
-
     <GridLayout
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
@@ -367,18 +366,22 @@
 
     <GridLayout
         android:id="@+id/ordle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="409dp"
+        android:layout_height="419dp"
         android:alignmentMode="alignMargins"
         android:columnCount="5"
         android:columnOrderPreserved="false"
         android:gravity="center"
         android:rowCount="5"
+        android:textAlignment="center"
         android:useDefaultMargins="true"
         app:layout_constraintBottom_toTopOf="@+id/keyboard"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.064">
+
         <!-- row 1 -->
         <TextView
             android:id="@+id/r1c1"
@@ -426,15 +429,14 @@
 
         <TextView
             android:id="@+id/r1c5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowSpan="1"
             android:layout_column="4"
             android:layout_columnSpan="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text=" "
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            />
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
         <!-- row 2 -->
 
@@ -442,7 +444,7 @@
             android:id="@+id/r2c1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
+            android:layout_row="1"
             android:layout_rowSpan="1"
             android:layout_column="0"
             android:layout_columnSpan="1"
@@ -453,7 +455,7 @@
             android:id="@+id/r2c2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
+            android:layout_row="1"
             android:layout_rowSpan="1"
             android:layout_column="1"
             android:layout_columnSpan="1"
@@ -464,7 +466,7 @@
             android:id="@+id/r2c3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
+            android:layout_row="1"
             android:layout_rowSpan="1"
             android:layout_column="2"
             android:layout_columnSpan="1"
@@ -475,7 +477,7 @@
             android:id="@+id/r2c4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
+            android:layout_row="1"
             android:layout_rowSpan="1"
             android:layout_column="3"
             android:layout_columnSpan="1"
@@ -484,14 +486,184 @@
 
         <TextView
             android:id="@+id/r2c5"
-            android:layout_row="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
             android:layout_rowSpan="1"
             android:layout_column="4"
             android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <!-- row 3 -->
+
+        <TextView
+            android:id="@+id/r3c1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_rowSpan="1"
+            android:layout_column="0"
+            android:layout_columnSpan="1"
             android:text=" "
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            />
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r3c2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_rowSpan="1"
+            android:layout_column="1"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r3c3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_rowSpan="1"
+            android:layout_column="2"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r3c4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_rowSpan="1"
+            android:layout_column="3"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r3c5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_rowSpan="1"
+            android:layout_column="4"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <!-- row 4 -->
+
+        <TextView
+            android:id="@+id/r4c1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_rowSpan="1"
+            android:layout_column="0"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r4c2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_rowSpan="1"
+            android:layout_column="1"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r4c3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_rowSpan="1"
+            android:layout_column="2"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r4c4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_rowSpan="1"
+            android:layout_column="3"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r4c5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_rowSpan="1"
+            android:layout_column="4"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <!-- row 5 -->
+
+        <TextView
+            android:id="@+id/r5c1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_rowSpan="1"
+            android:layout_column="0"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r5c2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_rowSpan="1"
+            android:layout_column="1"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r5c3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_rowSpan="1"
+            android:layout_column="2"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r5c4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_rowSpan="1"
+            android:layout_column="3"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+        <TextView
+            android:id="@+id/r5c5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_rowSpan="1"
+            android:layout_column="4"
+            android:layout_columnSpan="1"
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
     </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
