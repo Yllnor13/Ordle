@@ -25,31 +25,29 @@
         android:id="@+id/key_del"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="52dp"
+        android:elevation="2dp"
         android:text="Slett"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/keyboard"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ordle"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
 
     <Button
         android:id="@+id/key_ent"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="116dp"
+        android:elevation="2dp"
         android:text="Enter"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/keyboard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/key_del"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ordle"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
 
     <GridLayout
         android:id="@+id/keyboard"
@@ -118,14 +116,14 @@
             android:textSize="30sp" />
 
         <Button
-            android:id="@+id/key_tY"
+            android:id="@+id/key_Y"
             android:layout_row="0"
             android:layout_rowSpan="1"
             android:layout_column="5"
             android:layout_columnSpan="1"
             android:minWidth="4dp"
             android:padding="4dp"
-            android:text="T"
+            android:text="Y"
             android:textSize="30sp" />
 
         <Button

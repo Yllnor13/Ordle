@@ -18,6 +18,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //elements on the activity
+        val enter: Button = findViewById<Button>(R.id.key_ent)
+        val delete: Button = findViewById<Button>(R.id.key_del)
+        val keyboard: GridLayout = findViewById<GridLayout>(R.id.keyboard)
+
         // row 1
         var l1: TextView = findViewById<TextView>(R.id.r1c1)
         var l2: TextView = findViewById<TextView>(R.id.r1c2)
@@ -155,49 +160,87 @@ class MainActivity : AppCompatActivity() {
                     break
                 }
             }
-            for(j in rows.get(pos)){
-                attempt += j.getText()
-            }
+            attempt += rows.get(pos).get(tast).getText()
             if(attempt == ord){ //checks if it is the right word
                 for(j in rows.get(pos)){
                     j.setBackgroundColor(Color.GREEN)
                 }
             }
-            else if(" " !in attempt){//checks if it is the right letter in the right place
-                for(j in rows.get(pos)){
-                    for(o in ord){
-                        if(j.getText() == o.toString()){
-                            j.setBackgroundColor(Color.YELLOW)
-                        }
-                    }
-                }
-                val ordl = ord.split("")
-                for(x in 0..4){
-                    Log.i("CURRENT ITERATION: ", x.toString())
-                    Log.i("RESULT FROM ROWS: ", rows.get(pos).get(x).getText().toString())
-                    Log.i("RESULT FROM ORDL: ", ordl.get(x+1))
-                    if(rows.get(pos).get(x).getText() == ordl.get(x+1)){
-                        rows.get(pos).get(x).setBackgroundColor(Color.GREEN)
-                    }
-                }
+            if(" " !in attempt){//checks if it is the right letter in the right place
             }
         }
 
-        val enter: Button = findViewById<Button>(R.id.key_ent)
-        val delete: Button = findViewById<Button>(R.id.key_del)
-
         enter.setOnClickListener(object : View.OnClickListener{
             override fun onClick(view: View){
+                Log.i("ATTEMPT ", attempt)
                 if(attempt in norskord){
                     if(tast>4){
+                        Log.i("1TAST OG POS ER LIK ", "TAST = " + tast.toString() + "POS ER LIK = " + pos.toString())
+                        Log.i("2TAST OG POS ER LIK ", "TAST = " + tast.toString() + "POS ER LIK = " + pos.toString())
+                        Log.i("3TAST OG POS ER LIK ", "TAST = " + tast.toString() + "POS ER LIK = " + pos.toString())
+                        for(j in rows.get(pos)){
+                            for(o in ord){
+                                Log.i("J og O", "J = " + j.getText() + " O = " + o.toString())
+                                if(j.getText() == o.toString()){
+                                    j.setBackgroundColor(Color.YELLOW)
+                                    attempt = attempt.dropLast(1)
+                                    for (i in 0 until keyboard.getChildCount()) {
+                                        val v: View = keyboard.getChildAt(i)
+                                        if (v is Button) {
+                                            if(v.getText() in attempt){
+                                                v.setBackgroundColor(Color.YELLOW)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        val ordl = ord.split("")
+                        for(x in 0..4){
+                            Log.i("CURRENT ITERATION: ", x.toString())
+                            Log.i("RESULT FROM ROWS: ", rows.get(pos).get(x).getText().toString())
+                            Log.i("RESULT FROM ORDL: ", ordl.get(x+1))
+                            if(rows.get(pos).get(x).getText() == ordl.get(x+1)){
+                                rows.get(pos).get(x).setBackgroundColor(Color.GREEN)
+                                for (i in 0 until keyboard.getChildCount()) {
+                                    val v: View = keyboard.getChildAt(i)
+                                    if (v is Button) {
+                                        if(v.getText() in attempt){
+                                            v.setBackgroundColor(Color.GREEN)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
                         pos++
                         tast=0
+                        attempt = ""
                     }
                 }
             }
         })
 
-        val keyboard: GridLayout = findViewById<GridLayout>(R.id.keyboard)
+        delete.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(view: View){
+                Log.i("Attempt before delete", attempt)
+                if(tast>0){
+                    rows.get(pos).get(tast-1).setText(" ")
+                    attempt = attempt.dropLast(1)
+                    for (i in 0 until keyboard.getChildCount()) {
+                        val v: View = keyboard.getChildAt(i)
+                        if (v is Button) {
+                            if(v.getText() !in attempt){
+                                v.setBackgroundColor(Color.parseColor("#FF6200EE"))
+                            }
+                        }
+                    }
+                    tast--
+                    Log.i("Attempt after delete", attempt)
+                }
+            }
+        })
+
         for (i in 0 until keyboard.getChildCount()) {
             val v: View = keyboard.getChildAt(i)
             if (v is Button) {
