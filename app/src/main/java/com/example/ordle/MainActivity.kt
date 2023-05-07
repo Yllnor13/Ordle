@@ -123,7 +123,13 @@ class MainActivity : AppCompatActivity() {
             "FLEIP",
             "KNASK",
             "BOMBE",
-            "KAPPE"
+            "KAPPE",
+            "REKER",
+            "EKKEL",
+            "LASTE",
+            "LØNNE",
+            "REKER",
+            "EKKEL",
         )
 
         val ordliste = norskord.size
@@ -136,17 +142,19 @@ class MainActivity : AppCompatActivity() {
 
         var tast = 0
 
-        fun iterate(pos: Int, letter: String){
+        var attempt : String = ""
+
+        fun iterate(pos: Int, letter: String, v : Button){
             for(j in rows.get(pos)){
                 val s: String = j.getText().toString()
                 Log.i("rowtext", "row: " + s + " button: " + letter)
                 if (s == " "){
+                    v.setBackgroundColor(Color.GRAY)
                     j.setText(letter)
                     Log.i("rowtext", "row: " + s + " button: " + letter)
                     break
                 }
             }
-            var attempt : String = ""
             for(j in rows.get(pos)){
                 attempt += j.getText()
             }
@@ -175,6 +183,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val enter: Button = findViewById<Button>(R.id.key_ent)
+        val delete: Button = findViewById<Button>(R.id.key_del)
+
+        enter.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(view: View){
+                if(attempt in norskord){
+                    if(tast>4){
+                        pos++
+                        tast=0
+                    }
+                }
+            }
+        })
+
         val keyboard: GridLayout = findViewById<GridLayout>(R.id.keyboard)
         for (i in 0 until keyboard.getChildCount()) {
             val v: View = keyboard.getChildAt(i)
@@ -186,12 +208,8 @@ class MainActivity : AppCompatActivity() {
                         Log.i("letter", letter)
                         var string1: String = ""
                         if(tast<5){
-                            iterate(pos, letter)
+                            iterate(pos, letter, v)
                             tast++
-                        }
-                        if(tast>4){
-                            pos++
-                            tast=0
                         }
                     }
                 })
