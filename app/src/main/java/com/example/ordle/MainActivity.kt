@@ -9,7 +9,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.GridLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import java.util.Calendar
 import kotlin.random.Random
 
 
@@ -22,6 +25,20 @@ class MainActivity : AppCompatActivity() {
         val enter: Button = findViewById<Button>(R.id.key_ent)
         val delete: Button = findViewById<Button>(R.id.key_del)
         val keyboard: GridLayout = findViewById<GridLayout>(R.id.keyboard)
+
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_results, null)
+        builder.setView(dialogView)
+
+        builder.setPositiveButton("OK") { dialog, which ->
+            // do something when the OK button is clicked
+        }
+
+        val dialog = builder.create()
+
+        val rootView = findViewById<View>(android.R.id.content)
+        val snackbar = Snackbar.make(rootView, "dette er ikke et ord i listen", Snackbar.LENGTH_SHORT)
 
         // row 1
         var l1: TextView = findViewById<TextView>(R.id.r1c1)
@@ -71,6 +88,7 @@ class MainActivity : AppCompatActivity() {
             row5
         )
 
+        //TODO: add enough words until its 364
         val norskord = listOf<String>(
             "FISKE",
             "KASTE",
@@ -135,12 +153,25 @@ class MainActivity : AppCompatActivity() {
             "LØNNE",
             "REKER",
             "EKKEL",
+            "KAFFE",
+            "RIBBE",
+            "PØLSE",
+            "FJELL"
         )
 
         val ordliste = norskord.size
         val randomNr = Random.nextInt(ordliste)
 
-        val ord = norskord.get(randomNr)
+        val kalender = Calendar.getInstance()
+        val dagenIdag = kalender.get(Calendar.DAY_OF_YEAR)
+
+        var ord = "" //TODO: once I get 364+ words Ill change this to val and remove the if test
+        if(dagenIdag < norskord.size){
+            ord = norskord.get(dagenIdag)
+        }
+        else{
+            ord = norskord.get(0)
+        }
         Log.i("Ord: ", ord)
 
         var pos = 0
@@ -161,13 +192,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             attempt += rows.get(pos).get(tast).getText()
-            if(attempt == ord){ //checks if it is the right word
-                for(j in rows.get(pos)){
-                    j.setBackgroundColor(Color.GREEN)
-                }
-            }
-            if(" " !in attempt){//checks if it is the right letter in the right place
-            }
         }
 
         enter.setOnClickListener(object : View.OnClickListener{
@@ -183,11 +207,10 @@ class MainActivity : AppCompatActivity() {
                                 Log.i("J og O", "J = " + j.getText() + " O = " + o.toString())
                                 if(j.getText() == o.toString()){
                                     j.setBackgroundColor(Color.YELLOW)
-                                    attempt = attempt.dropLast(1)
                                     for (i in 0 until keyboard.getChildCount()) {
                                         val v: View = keyboard.getChildAt(i)
                                         if (v is Button) {
-                                            if(v.getText() in attempt){
+                                            if(v.getText() in attempt && v.getText() == o.toString()){ //TODO: make it so that the buttons dont change color if its already changed
                                                 v.setBackgroundColor(Color.YELLOW)
                                             }
                                         }
@@ -205,7 +228,7 @@ class MainActivity : AppCompatActivity() {
                                 for (i in 0 until keyboard.getChildCount()) {
                                     val v: View = keyboard.getChildAt(i)
                                     if (v is Button) {
-                                        if(v.getText() in attempt){
+                                        if(v.getText() in attempt && v.getText() in ord){
                                             v.setBackgroundColor(Color.GREEN)
                                         }
                                     }
@@ -217,6 +240,9 @@ class MainActivity : AppCompatActivity() {
                         tast=0
                         attempt = ""
                     }
+                }
+                else {
+                    snackbar.show()
                 }
             }
         })
