@@ -1,2 +1,2 @@
 # Ordle
-wordle clone with focus on norwegian words
+a game very much inspired by wordle that is focused on norwegian words.
